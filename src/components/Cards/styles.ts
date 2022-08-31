@@ -19,7 +19,6 @@ const Card = styled.div`
   max-width: 24.84rem;
   height: 13.6rem;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  padding: 1.5rem;
 `
 
 export const CardFront = styled(Card)`
@@ -27,6 +26,7 @@ export const CardFront = styled(Card)`
   margin-bottom: 2.3rem;
   display: flex;
   flex-direction: column;
+  padding: 1.5rem;
 
   .card-logo {
     max-width: 84px;
@@ -64,4 +64,14 @@ export const CardFront = styled(Card)`
 export const CardBack = styled(Card)`
   background-image: url(${cardBackBackground});
   margin-left: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  .cvc-numbers {
+    color: ${(props) => props.theme.white};
+    font-size: 0.75rem;
+    padding-right: 3rem;
+    margin-bottom: 0.2rem;
+  }
 `

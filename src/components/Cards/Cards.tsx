@@ -14,7 +14,9 @@ export function Cards() {
           <span className="expiration-date">00/00</span>
         </div>
       </CardFront>
-      <CardBack></CardBack>
+      <CardBack>
+        <span className="cvc-numbers">000</span>
+      </CardBack>
     </Container>
   )
 }
