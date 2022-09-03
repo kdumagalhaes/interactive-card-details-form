@@ -17,6 +17,7 @@ body {
 body, input, textarea, button {
     font-weight: 500;
     font-size: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
 }
 button {
     cursor: pointer;

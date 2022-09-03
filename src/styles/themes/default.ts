@@ -9,4 +9,7 @@ export const defaultTheme = {
   lightGrayishViolet: 'hsl(270, 3%, 87%)',
   darkGrayishViolet: 'hsl(279, 6%, 55%)',
   veryDarkViolet: 'hsl(278, 68%, 11%)',
+  darkViolet: 'hsl(278, 68%, 20%)',
+
+  letterSpacing: '0.11rem',
 }
