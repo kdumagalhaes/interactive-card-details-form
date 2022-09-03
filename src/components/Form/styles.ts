@@ -4,8 +4,6 @@ export const Container = styled.main`
   form {
     display: flex;
     flex-direction: column;
-    max-width: 440px;
-    margin: 100px auto;
 
     label {
       text-transform: uppercase;
