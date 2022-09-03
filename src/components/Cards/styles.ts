@@ -63,7 +63,7 @@ export const CardFront = styled(Card)`
   .client-name,
   .expiration-date {
     color: ${(props) => props.theme.lightGrayishViolet};
-    letter-spacing: 0.11rem;
+    letter-spacing: ${(props) => props.theme.letterSpacing};
   }
 
   .client-name,
