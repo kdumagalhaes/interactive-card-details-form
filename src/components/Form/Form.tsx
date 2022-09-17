@@ -1,10 +1,31 @@
 import { Button, Container } from './styles'
 import InputMask from 'react-input-mask'
+import { useState, ChangeEvent } from 'react'
+import { FormModel, useFormInfo } from '../../context/FormContext'
 
 export function Form() {
+  const { getFormInfo } = useFormInfo()
+  const [name, setName] = useState('')
+
+  const handleFormInfo = () => {
+    const formData: FormModel = {
+      name,
+      cardNumber: '',
+      expirationMonth: '',
+      expirationYear: '',
+      securityCode: '',
+    }
+
+    getFormInfo(formData)
+  }
+
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value)
+  }
+
   return (
     <Container>
-      <form action="">
+      <form onKeyUp={handleFormInfo}>
         <label htmlFor="name">Cardholder Name</label>
         <input
           id="name"
@@ -12,6 +33,8 @@ export function Form() {
           maxLength={20}
           placeholder="e.g. Jane Appelseed"
           required
+          onChange={handleNameChange}
+          value={name}
         />
         <label htmlFor="card-number">Card Number</label>
         <InputMask
