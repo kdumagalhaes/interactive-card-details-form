@@ -6,8 +6,9 @@ import { Cards } from '../Cards/Cards'
 export function SideBar() {
   return (
     <>
-      <Container></Container>
-      <Cards />
+      <Container>
+        <Cards />
+      </Container>
     </>
   )
 }

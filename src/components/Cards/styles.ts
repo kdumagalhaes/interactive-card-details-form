@@ -6,6 +6,7 @@ import cardBackBackground from '../../assets/images/bg-card-back.png'
 
 export const Container = styled.div`
   width: 100%;
+  max-width: 29.5rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
