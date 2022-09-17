@@ -7,15 +7,17 @@ import { useFormInfo } from '../../context/FormContext'
 export function Cards() {
   const { formInfo } = useFormInfo()
 
-  const name = formInfo.name === '' ? 'Jane Appleseed' : formInfo.name
+  const clientName = formInfo.name === '' ? 'Jane Appleseed' : formInfo.name
+  const cardNumbers =
+    formInfo.cardNumber === '' ? '0000 0000 0000 0000' : formInfo.cardNumber
 
   return (
     <Container>
       <CardFront>
         <img src={cardLogo} alt="two white circles" className="card-logo" />
-        <span className="card-numbers">0000000000000000</span>
+        <span className="card-numbers">{cardNumbers}</span>
         <div className="divider">
-          <p className="client-name">{name}</p>
+          <p className="client-name">{clientName}</p>
           <span className="expiration-date">00/00</span>
         </div>
       </CardFront>
