@@ -5,12 +5,14 @@ import { FormModel, useFormInfo } from '../../context/FormContext'
 
 export function Form() {
   const { getFormInfo } = useFormInfo()
+
   const [name, setName] = useState('')
+  const [cardNumber, setCardNumber] = useState('')
 
   const handleFormInfo = () => {
     const formData: FormModel = {
       name,
-      cardNumber: '',
+      cardNumber,
       expirationMonth: '',
       expirationYear: '',
       securityCode: '',
@@ -21,6 +23,10 @@ export function Form() {
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value)
+  }
+
+  const handleCardNumber = (e: ChangeEvent<HTMLInputElement>) => {
+    setCardNumber(e.target.value)
   }
 
   return (
@@ -45,6 +51,8 @@ export function Form() {
           pattern="[0-9]*"
           placeholder="e.g. 1234 5678 9123 0000"
           required
+          onChange={handleCardNumber}
+          value={cardNumber}
         />
         <div className="wrapper">
           <div className="expiration-date">
