@@ -11,9 +11,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 180px;
 
   @media (max-width: ${(props) => props.theme.mobile}) {
     padding: 1.8rem 1rem 0 1rem;
@@ -44,7 +41,6 @@ export const CardFront = styled(Card)`
   @media (max-width: ${(props) => props.theme.mobile}) {
     padding: 1rem;
     position: relative;
-    z-index: 9;
     top: 100px;
   }
 

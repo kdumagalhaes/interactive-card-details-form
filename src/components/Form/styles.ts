@@ -5,8 +5,11 @@ export const Container = styled.main`
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 0 1.5rem;
+
+  @media (max-width: 1095px) {
+    justify-content: center;
+  }
 
   form {
     display: flex;
