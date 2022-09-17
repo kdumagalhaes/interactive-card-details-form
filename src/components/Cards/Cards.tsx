@@ -14,6 +14,8 @@ export function Cards() {
     formInfo.expirationMonth === '' ? '00' : formInfo.expirationMonth
   const expirationYear =
     formInfo.expirationYear === '' ? '00' : formInfo.expirationYear
+  const cvcNumbers =
+    formInfo.securityCode === '' ? '000' : formInfo.securityCode
 
   return (
     <Container>
@@ -28,7 +30,7 @@ export function Cards() {
         </div>
       </CardFront>
       <CardBack>
-        <span className="cvc-numbers">000</span>
+        <span className="cvc-numbers">{cvcNumbers}</span>
       </CardBack>
     </Container>
   )
