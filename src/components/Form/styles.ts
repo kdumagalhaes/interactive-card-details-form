@@ -11,9 +11,18 @@ export const Container = styled.main`
     justify-content: center;
   }
 
+  @media (max-width: ${(props) => props.theme.mobile}) {
+    height: 100%;
+    margin-top: 4.5rem;
+  }
+
   form {
     display: flex;
     flex-direction: column;
+
+    @media (max-width: ${(props) => props.theme.mobile}) {
+      padding-bottom: 3rem;
+    }
 
     label {
       text-transform: uppercase;
@@ -34,12 +43,15 @@ export const Container = styled.main`
       color: ${(props) => props.theme.white};
       font-size: 1px;
       position: absolute;
-      left: 999px;
     }
 
     .expiration-year,
     .expiration-month {
       width: 4.7rem;
+
+      @media (max-width: ${(props) => props.theme.mobile}) {
+        width: 4.1rem;
+      }
     }
 
     input {
@@ -55,6 +67,16 @@ export const Container = styled.main`
 
     .expiration-date {
       margin-right: 1rem;
+
+      @media (max-width: ${(props) => props.theme.mobile}) {
+        margin-right: 0.7rem;
+      }
+    }
+
+    input[id='security-code'] {
+      @media (max-width: ${(props) => props.theme.mobile}) {
+        width: 100%;
+      }
     }
 
     .security-code-divider,
@@ -73,6 +95,10 @@ export const Container = styled.main`
 
     .wrapper {
       display: flex;
+
+      @media (max-width: ${(props) => props.theme.mobile}) {
+        width: 100%;
+      }
     }
   }
 `
