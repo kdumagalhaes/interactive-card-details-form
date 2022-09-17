@@ -1,9 +1,23 @@
 import { Button, Container } from './styles'
 import InputMask from 'react-input-mask'
 import { useState, ChangeEvent } from 'react'
+import { FormModel, useFormInfo } from '../../context/FormContext'
 
 export function Form() {
+  const { getFormInfo } = useFormInfo()
   const [name, setName] = useState('')
+
+  const handleFormInfo = () => {
+    const formData: FormModel = {
+      name,
+      cardNumber: '',
+      expirationMonth: '',
+      expirationYear: '',
+      securityCode: '',
+    }
+
+    getFormInfo(formData)
+  }
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value)
@@ -11,7 +25,7 @@ export function Form() {
 
   return (
     <Container>
-      <form action="">
+      <form onKeyUp={handleFormInfo}>
         <label htmlFor="name">Cardholder Name</label>
         <input
           id="name"

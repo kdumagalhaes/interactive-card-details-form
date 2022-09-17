@@ -1,7 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
-import { Form } from '../components/Form/Form'
 
-interface Form {
+export interface FormModel {
   name: string
   cardNumber: string
   expirationMonth: string
@@ -10,8 +9,8 @@ interface Form {
 }
 
 interface FormContextModel {
-  formInfo: Form
-  getFormInfo: (formInfo: Form) => void
+  formInfo: FormModel
+  getFormInfo: (formInfo: FormModel) => void
 }
 
 interface FormProviderProps {
@@ -21,7 +20,7 @@ interface FormProviderProps {
 const FormContext = createContext({} as FormContextModel)
 
 export const FormProvider = ({ children }: FormProviderProps) => {
-  const [formInfo, setFormInfo] = useState<Form>({
+  const [formInfo, setFormInfo] = useState<FormModel>({
     name: '',
     cardNumber: '',
     expirationMonth: '',
@@ -29,8 +28,9 @@ export const FormProvider = ({ children }: FormProviderProps) => {
     securityCode: '',
   })
 
-  const getFormInfo = (formInfo: Form) => {
-    const formInfoUpdated: Form = {
+  const getFormInfo = (formInfo: FormModel) => {
+    console.log('formInfo = ', formInfo)
+    const formInfoUpdated: FormModel = {
       name: formInfo.name,
       cardNumber: formInfo.cardNumber,
       expirationMonth: formInfo.expirationMonth,
