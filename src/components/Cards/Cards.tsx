@@ -10,6 +10,10 @@ export function Cards() {
   const clientName = formInfo.name === '' ? 'Jane Appleseed' : formInfo.name
   const cardNumbers =
     formInfo.cardNumber === '' ? '0000 0000 0000 0000' : formInfo.cardNumber
+  const expirationMonth =
+    formInfo.expirationMonth === '' ? '00' : formInfo.expirationMonth
+  const expirationYear =
+    formInfo.expirationYear === '' ? '00' : formInfo.expirationYear
 
   return (
     <Container>
@@ -18,7 +22,9 @@ export function Cards() {
         <span className="card-numbers">{cardNumbers}</span>
         <div className="divider">
           <p className="client-name">{clientName}</p>
-          <span className="expiration-date">00/00</span>
+          <span className="expiration-date">
+            {expirationMonth}/{expirationYear}
+          </span>
         </div>
       </CardFront>
       <CardBack>
