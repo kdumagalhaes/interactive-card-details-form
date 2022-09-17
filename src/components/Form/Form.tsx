@@ -10,6 +10,7 @@ export function Form() {
   const [cardNumber, setCardNumber] = useState('')
   const [expirationMonth, setExpirationMonth] = useState('')
   const [expirationYear, setExpirationYear] = useState('')
+  const [securityCode, setSecurityCode] = useState('')
 
   const handleFormInfo = () => {
     const formData: FormModel = {
@@ -17,7 +18,7 @@ export function Form() {
       cardNumber,
       expirationMonth,
       expirationYear,
-      securityCode: '',
+      securityCode,
     }
 
     getFormInfo(formData)
@@ -37,6 +38,10 @@ export function Form() {
 
   const handleExpirationYear = (e: ChangeEvent<HTMLInputElement>) => {
     setExpirationYear(e.target.value)
+  }
+
+  const handleSecurityCode = (e: ChangeEvent<HTMLInputElement>) => {
+    setSecurityCode(e.target.value)
   }
 
   return (
@@ -95,12 +100,13 @@ export function Form() {
 
           <div className="security-code-divider">
             <label htmlFor="security-code">CVC</label>
-            <input
+            <InputMask
+              mask="999"
               id="security-code"
               inputMode="numeric"
-              pattern="[0-9]*"
               type="text"
               placeholder="e.g. 123"
+              onChange={handleSecurityCode}
               required
             />
           </div>
