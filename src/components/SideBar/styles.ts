@@ -4,10 +4,13 @@ import backgroundImgDesktop from '../../assets/images/bg-main-desktop.png'
 import backgroundImgMobile from '../../assets/images/bg-main-mobile.png'
 
 export const Container = styled.div`
-  background-image: url(${backgroundImgDesktop});
   width: 100%;
-  max-width: 27rem;
-  height: 100vh;
+  max-width: 49rem;
+  background-image: url(${backgroundImgDesktop});
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: ${(props) => props.theme.mobile}) {
     background-image: url(${backgroundImgMobile});
