@@ -5,9 +5,9 @@ import backgroundImgMobile from '../../assets/images/bg-main-mobile.png'
 
 export const Container = styled.div`
   background-image: url(${backgroundImgDesktop});
+  width: 100%;
   max-width: 27rem;
   height: 100vh;
-  position: relative;
 
   @media (max-width: ${(props) => props.theme.mobile}) {
     background-image: url(${backgroundImgMobile});
