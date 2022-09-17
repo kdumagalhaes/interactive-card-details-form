@@ -8,13 +8,15 @@ export function Form() {
 
   const [name, setName] = useState('')
   const [cardNumber, setCardNumber] = useState('')
+  const [expirationMonth, setExpirationMonth] = useState('')
+  const [expirationYear, setExpirationYear] = useState('')
 
   const handleFormInfo = () => {
     const formData: FormModel = {
       name,
       cardNumber,
-      expirationMonth: '',
-      expirationYear: '',
+      expirationMonth,
+      expirationYear,
       securityCode: '',
     }
 
@@ -27,6 +29,14 @@ export function Form() {
 
   const handleCardNumber = (e: ChangeEvent<HTMLInputElement>) => {
     setCardNumber(e.target.value)
+  }
+
+  const handleExpirationMonth = (e: ChangeEvent<HTMLInputElement>) => {
+    setExpirationMonth(e.target.value)
+  }
+
+  const handleExpirationYear = (e: ChangeEvent<HTMLInputElement>) => {
+    setExpirationYear(e.target.value)
   }
 
   return (
@@ -48,7 +58,6 @@ export function Form() {
           id="card-number"
           type="text"
           inputMode="numeric"
-          pattern="[0-9]*"
           placeholder="e.g. 1234 5678 9123 0000"
           required
           onChange={handleCardNumber}
@@ -59,24 +68,26 @@ export function Form() {
             <label htmlFor="expiration-month">Exp. date (MM/YY)</label>
             <div className="divider">
               <InputMask
-                mask="0-12"
+                mask="99"
                 id="expiration-month"
                 className="expiration-month"
-                type="number"
-                pattern="[0-9]*"
-                placeholder="MM"
+                type="text"
+                inputMode="numeric"
                 min={1}
                 max={12}
+                placeholder="MM"
+                onChange={handleExpirationMonth}
                 required
               />
               <label htmlFor="expiration-year">(MM/YY)</label>
-              <input
+              <InputMask
+                mask="99"
                 id="expiration-year"
                 className="expiration-year"
                 type="text"
                 inputMode="numeric"
-                pattern="[0-9]*"
                 placeholder="YY"
+                onChange={handleExpirationYear}
                 required
               />
             </div>
