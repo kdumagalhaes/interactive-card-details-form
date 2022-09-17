@@ -1,7 +1,14 @@
 import { Button, Container } from './styles'
 import InputMask from 'react-input-mask'
+import { useState, ChangeEvent } from 'react'
 
 export function Form() {
+  const [name, setName] = useState('')
+
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value)
+  }
+
   return (
     <Container>
       <form action="">
@@ -12,6 +19,8 @@ export function Form() {
           maxLength={20}
           placeholder="e.g. Jane Appelseed"
           required
+          onChange={handleNameChange}
+          value={name}
         />
         <label htmlFor="card-number">Card Number</label>
         <InputMask
