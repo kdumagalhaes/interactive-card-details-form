@@ -41,7 +41,8 @@ export const CardFront = styled(Card)`
   @media (max-width: ${(props) => props.theme.mobile}) {
     padding: 1rem;
     position: relative;
-    top: 100px;
+    z-index: 9;
+    top: 78px;
   }
 
   .card-logo {
