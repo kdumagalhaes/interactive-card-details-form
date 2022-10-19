@@ -1,7 +1,8 @@
-import { Button, Container } from './styles'
+import { Container } from './styles'
 import InputMask from 'react-input-mask'
 import { useState, ChangeEvent } from 'react'
 import { FormModel, useFormInfo } from '../../context/FormContext'
+import { Button } from '../Button/Button'
 
 export function Form() {
   const { getFormInfo } = useFormInfo()
@@ -112,7 +113,7 @@ export function Form() {
           </div>
         </div>
 
-        <Button>Confirm</Button>
+        <Button text="Confirm" />
       </form>
     </Container>
   )
