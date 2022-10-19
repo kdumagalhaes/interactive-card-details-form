@@ -3,6 +3,7 @@ import InputMask from 'react-input-mask'
 import { useState, ChangeEvent, SyntheticEvent } from 'react'
 import { FormModel, useFormInfo } from '../../context/FormContext'
 import { Button } from '../Button/Button'
+import 'animate.css'
 
 export function Form() {
   const { getFormInfo, getFormConfirmation, formInfo } = useFormInfo()
@@ -59,7 +60,7 @@ export function Form() {
   }
 
   return (
-    <Container>
+    <Container className="animate__animated animate__fadeIn">
       <form onKeyUp={handleFormInfo} onSubmit={handleFormSubmit}>
         <label htmlFor="name">Cardholder Name</label>
         <input

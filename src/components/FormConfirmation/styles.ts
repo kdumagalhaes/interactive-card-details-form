@@ -2,11 +2,8 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 25.75rem;
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 0 1.5rem;
 
@@ -17,6 +14,14 @@ export const Container = styled.div`
   @media (max-width: ${(props) => props.theme.mobile}) {
     height: 100%;
     margin-top: 4.5rem;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: 23rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .complete-icon {
