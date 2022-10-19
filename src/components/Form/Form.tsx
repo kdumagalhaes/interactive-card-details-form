@@ -1,11 +1,11 @@
 import { Container } from './styles'
 import InputMask from 'react-input-mask'
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent, SyntheticEvent } from 'react'
 import { FormModel, useFormInfo } from '../../context/FormContext'
 import { Button } from '../Button/Button'
 
 export function Form() {
-  const { getFormInfo } = useFormInfo()
+  const { getFormInfo, getFormConfirmation, formInfo } = useFormInfo()
 
   const [name, setName] = useState('')
   const [cardNumber, setCardNumber] = useState('')
@@ -23,6 +23,19 @@ export function Form() {
     }
 
     getFormInfo(formData)
+  }
+
+  const isNullish = Object.values(formInfo).every((value) => {
+    if (value !== '') {
+      return true
+    }
+
+    return false
+  })
+
+  const handleFormSubmit = (e: SyntheticEvent) => {
+    e.preventDefault()
+    getFormConfirmation(isNullish)
   }
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +60,7 @@ export function Form() {
 
   return (
     <Container>
-      <form onKeyUp={handleFormInfo}>
+      <form onKeyUp={handleFormInfo} onSubmit={handleFormSubmit}>
         <label htmlFor="name">Cardholder Name</label>
         <input
           id="name"

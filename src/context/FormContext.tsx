@@ -11,6 +11,8 @@ export interface FormModel {
 interface FormContextModel {
   formInfo: FormModel
   getFormInfo: (formInfo: FormModel) => void
+  getFormConfirmation: (confirmation: boolean) => boolean
+  isConfirmed: boolean
 }
 
 interface FormProviderProps {
@@ -28,8 +30,9 @@ export const FormProvider = ({ children }: FormProviderProps) => {
     securityCode: '',
   })
 
+  const [isConfirmed, setIsConfirmed] = useState(false)
+
   const getFormInfo = (formInfo: FormModel) => {
-    console.log('formInfo = ', formInfo)
     const formInfoUpdated: FormModel = {
       name: formInfo.name,
       cardNumber: formInfo.cardNumber,
@@ -40,9 +43,16 @@ export const FormProvider = ({ children }: FormProviderProps) => {
     setFormInfo(formInfoUpdated)
   }
 
+  const getFormConfirmation = (confirmation: boolean) => {
+    confirmation ? setIsConfirmed(true) : setIsConfirmed(false)
+    return confirmation
+  }
+
   const value = {
     formInfo,
     getFormInfo,
+    getFormConfirmation,
+    isConfirmed,
   }
 
   return <FormContext.Provider value={value}>{children}</FormContext.Provider>
