@@ -16,7 +16,10 @@ export function FormConfirmation() {
   }
 
   return (
-    <Container className="animate__animated animate__fadeIn">
+    <Container
+      className="animate__animated animate__fadeIn"
+      role="form confirmation message"
+    >
       <div className="wrapper">
         <img className="complete-icon" src={IconComplete} alt="complete icon" />
         <h1 className="title">Thank you!</h1>
