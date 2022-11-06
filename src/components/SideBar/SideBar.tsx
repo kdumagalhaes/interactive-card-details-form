@@ -6,7 +6,7 @@ import { Cards } from '../Cards/Cards'
 export function SideBar() {
   return (
     <>
-      <Container>
+      <Container role="sidebar">
         <Cards />
       </Container>
     </>

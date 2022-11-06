@@ -18,8 +18,8 @@ export function Cards() {
     formInfo.securityCode === '' ? '000' : formInfo.securityCode
 
   return (
-    <Container>
-      <CardFront>
+    <Container role="cards container">
+      <CardFront role="front card">
         <img src={cardLogo} alt="two white circles" className="card-logo" />
         <span className="card-numbers">{cardNumbers}</span>
         <div className="divider">
@@ -29,7 +29,7 @@ export function Cards() {
           </span>
         </div>
       </CardFront>
-      <CardBack>
+      <CardBack role="back card">
         <span className="cvc-numbers">{cvcNumbers}</span>
       </CardBack>
     </Container>

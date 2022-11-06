@@ -60,7 +60,10 @@ export function Form() {
   }
 
   return (
-    <Container className="animate__animated animate__fadeIn">
+    <Container
+      role="form container"
+      className="animate__animated animate__fadeIn"
+    >
       <form onKeyUp={handleFormInfo} onSubmit={handleFormSubmit}>
         <label htmlFor="name">Cardholder Name</label>
         <input
