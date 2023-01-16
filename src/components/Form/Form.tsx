@@ -1,29 +1,27 @@
 import { Container } from './styles'
 import InputMask from 'react-input-mask'
 import { useState, ChangeEvent, SyntheticEvent } from 'react'
-import { FormModel, useFormInfo } from '../../context/FormContext'
+import { useFormInfo } from '../../context/FormContext'
 import { Button } from '../Button/Button'
 import 'animate.css'
 
 export function Form() {
   const { getFormInfo, getFormConfirmation, formInfo } = useFormInfo()
 
-  const [name, setName] = useState('')
-  const [cardNumber, setCardNumber] = useState('')
-  const [expirationMonth, setExpirationMonth] = useState('')
-  const [expirationYear, setExpirationYear] = useState('')
-  const [securityCode, setSecurityCode] = useState('')
+  const [data, setData] = useState({
+    name: '',
+    cardNumber: '',
+    expirationMonth: '',
+    expirationYear: '',
+    securityCode: '',
+  })
+
+  const handleData = (prop: string, event: ChangeEvent<HTMLInputElement>) => {
+    setData({ ...data, [prop]: event.target.value })
+  }
 
   const handleFormInfo = () => {
-    const formData: FormModel = {
-      name,
-      cardNumber,
-      expirationMonth,
-      expirationYear,
-      securityCode,
-    }
-
-    getFormInfo(formData)
+    getFormInfo(data)
   }
 
   const isNullish = Object.values(formInfo).every((value) => {
@@ -39,26 +37,6 @@ export function Form() {
     getFormConfirmation(isNullish)
   }
 
-  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value)
-  }
-
-  const handleCardNumber = (e: ChangeEvent<HTMLInputElement>) => {
-    setCardNumber(e.target.value)
-  }
-
-  const handleExpirationMonth = (e: ChangeEvent<HTMLInputElement>) => {
-    setExpirationMonth(e.target.value)
-  }
-
-  const handleExpirationYear = (e: ChangeEvent<HTMLInputElement>) => {
-    setExpirationYear(e.target.value)
-  }
-
-  const handleSecurityCode = (e: ChangeEvent<HTMLInputElement>) => {
-    setSecurityCode(e.target.value)
-  }
-
   return (
     <Container
       role="form container"
@@ -72,8 +50,8 @@ export function Form() {
           maxLength={20}
           placeholder="e.g. Jane Appelseed"
           required
-          onChange={handleNameChange}
-          value={name}
+          onChange={(e) => handleData('name', e)}
+          value={data.name}
         />
         <label htmlFor="card-number">Card Number</label>
         <InputMask
@@ -83,8 +61,8 @@ export function Form() {
           inputMode="numeric"
           placeholder="e.g. 1234 5678 9123 0000"
           required
-          onChange={handleCardNumber}
-          value={cardNumber}
+          onChange={(e) => handleData('cardNumber', e)}
+          value={data.cardNumber}
         />
         <div className="wrapper">
           <div className="expiration-date">
@@ -99,7 +77,7 @@ export function Form() {
                 min={1}
                 max={12}
                 placeholder="MM"
-                onChange={handleExpirationMonth}
+                onChange={(e) => handleData('expirationMonth', e)}
                 required
               />
               <label htmlFor="expiration-year">(MM/YY)</label>
@@ -110,7 +88,7 @@ export function Form() {
                 type="text"
                 inputMode="numeric"
                 placeholder="YY"
-                onChange={handleExpirationYear}
+                onChange={(e) => handleData('expirationYear', e)}
                 required
               />
             </div>
@@ -124,7 +102,7 @@ export function Form() {
               inputMode="numeric"
               type="text"
               placeholder="e.g. 123"
-              onChange={handleSecurityCode}
+              onChange={(e) => handleData('securityCode', e)}
               required
             />
           </div>
